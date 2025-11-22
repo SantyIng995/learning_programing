@@ -1,8 +1,0 @@
-import random
-dato=input("Quieres lanzar el dado?")
-if dato=="si":
-    dado=random.randint(1,6)
-    dado2=random.randint(1,6)
-    print(dado,dado2)
-else:
-    print("no tiraste")
