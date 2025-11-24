@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<flowgorithm fileversion="2.18">
+  <properties>
+    <name>LanzarDados</name>
+    <about>Conversión de Python a Flowgorithm</about>
+    <saved>2025-11-24</saved>
+    <created>2025-11-24</created>
+    <edited>2025-11-24</edited>
+  </properties>
+  <symbols>
+    <symbol type="start" id="1"/>
+    <symbol type="declare" id="2">
+      <variable name="contador" type="Integer" array="False"/>
+      <variable name="dado1" type="Integer" array="False"/>
+      <variable name="dado2" type="Integer" array="False"/>
+    </symbol>
+    <symbol type="assign" id="3">
+      <assignment variable="contador" expression="0"/>
+    </symbol>
+    <symbol type="output" id="4">
+      <text>Lanzando dados hasta obtener un 6</text>
+    </symbol>
+    <symbol type="loop" id="5" loopType="PreTest" expression="True"/>
+    <symbol type="assign" id="6">
+      <assignment variable="dado1" expression="Random(1,6)"/>
+    </symbol>
+    <symbol type="assign" id="7">
+      <assignment variable="dado2" expression="Random(1,6)"/>
+    </symbol>
+    <symbol type="assign" id="8">
+      <assignment variable="contador" expression="contador + 1"/>
+    </symbol>
+    <symbol type="output" id="9">
+      <text>Concatenate(&quot;Tiro &quot;, contador, &quot; Dado1 = &quot;, dado1, &quot; Dado2 = &quot;, dado2)</text>
+    </symbol>
+    <symbol type="if" id="10" expression="dado1 = 6 And dado2 = 6"/>
+    <symbol type="output" id="11">
+      <text>¡Par de seis obtenido!</text>
+    </symbol>
+    <symbol type="output" id="12">
+      <text>Concatenate(&quot;Total de lanzamientos: &quot;, contador)</text>
+    </symbol>
+    <symbol type="break" id="13"/>
+    <symbol type="end" id="14"/>
+  </symbols>
+  <connections>
+    <connection from="1" to="2"/>
+    <connection from="2" to="3"/>
+    <connection from="3" to="4"/>
+    <connection from="4" to="5"/>
+    <connection from="5" to="6"/>
+    <connection from="6" to="7"/>
+    <connection from="7" to="8"/>
+    <connection from="8" to="9"/>
+    <connection from="9" to="10"/>
+    <connection from="10" to="11" condition="True"/>
+    <connection from="10" to="5" condition="False"/>
+    <connection from="11" to="12"/>
+    <connection from="12" to="13"/>
+    <connection from="13" to="14"/>
+  </connections>
+</flowgorithm>
