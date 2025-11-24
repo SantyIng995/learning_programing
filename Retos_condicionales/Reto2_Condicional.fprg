@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<flowgorithm fileversion="3.0">
+  <properties>
+    <name>ParImpar</name>
+  </properties>
+
+  <symbols>
+    <symbol id="1" type="start"/>
+
+    <symbol id="2" type="declare">
+      <variable name="num" type="integer"/>
+    </symbol>
+
+    <symbol id="3" type="input">
+      <variable>num</variable>
+      <prompt>Ingresar número:</prompt>
+    </symbol>
+
+    <symbol id="4" type="if" expression="num % 2 = 0"/>
+
+    <symbol id="5" type="output">
+      <text>El número es par</text>
+    </symbol>
+
+    <symbol id="6" type="output">
+      <text>El número es impar</text>
+    </symbol>
+
+    <symbol id="7" type="end"/>
+  </symbols>
+
+  <connections>
+    <connection from="1" to="2"/>
+    <connection from="2" to="3"/>
+    <connection from="3" to="4"/>
+
+    <connection from="4" to="5" condition="True"/>
+    <connection from="4" to="6" condition="False"/>
+
+    <connection from="5" to="7"/>
+    <connection from="6" to="7"/>
+  </connections>
+</flowgorithm>
