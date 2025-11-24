@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<flowgorithm fileversion="3.0">
+  <properties>
+    <name>DadoJuegoReporte</name>
+  </properties>
+
+  <symbols>
+    <symbol id="1" type="start"/>
+
+    <symbol id="2" type="declare">
+      <variable name="contadorPares" type="integer"/>
+      <variable name="contadorImpares" type="integer"/>
+      <variable name="totalTiros" type="integer"/>
+      <variable name="sumaTiros" type="integer"/>
+      <variable name="numero" type="integer"/>
+      <variable name="respuesta" type="string"/>
+    </symbol>
+
+    <symbol id="3" type="assign">
+      <assignment variable="contadorPares" expression="0"/>
+    </symbol>
+
+    <symbol id="4" type="assign">
+      <assignment variable="contadorImpares" expression="0"/>
+    </symbol>
+
+    <symbol id="5" type="assign">
+      <assignment variable="totalTiros" expression="0"/>
+    </symbol>
+
+    <symbol id="6" type="assign">
+      <assignment variable="sumaTiros" expression="0"/>
+    </symbol>
+
+    <symbol id="7" type="loop" loopType="PreTest" expression="True"/>
+
+    <symbol id="8" type="input">
+      <variable>respuesta</variable>
+      <prompt>¿Deseas lanzar el dado? (s/n)</prompt>
+    </symbol>
+
+    <symbol id="9" type="if" expression="respuesta != &quot;s&quot;"/>
+
+    <symbol id="10" type="break"/>
+
+    <symbol id="11" type="assign">
+      <assignment variable="numero" expression="RandomInteger(1,6)"/>
+    </symbol>
+
+    <symbol id="12" type="output">
+      <text>Concatenate("Número obtenido: ", numero)</text>
+    </symbol>
+
+    <symbol id="13" type="assign">
+      <assignment variable="totalTiros" expression="totalTiros + 1"/>
+    </symbol>
+
+    <symbol id="14" type="assign">
+      <assignment variable="sumaTiros" expression="sumaTiros + numero"/>
+    </symbol>
+
+    <symbol id="15" type="if" expression="numero % 2 = 0"/>
+
+    <symbol id="16" type="assign">
+      <assignment variable="contadorPares" expression="contadorPares + 1"/>
+    </symbol>
+
+    <symbol id="17" type="assign">
+      <assignment variable="contadorImpares" expression="contadorImpares + 1"/>
+    </symbol>
+
+    <symbol id="18" type="output">
+      <text>Concatenate("Total de tiros efectuados: ", totalTiros)</text>
+    </symbol>
+
+    <symbol id="19" type="output">
+      <text>Concatenate("Suma total de los tiros: ", sumaTiros)</text>
+    </symbol>
+
+    <symbol id="20" type="output">
+      <text>Concatenate("Total de pares generados: ", contadorPares)</text>
+    </symbol>
+
+    <symbol id="21" type="output">
+      <text>Concatenate("Total de impares generados: ", contadorImpares)</text>
+    </symbol>
+
+    <symbol id="22" type="end"/>
+  </symbols>
+
+  <connections>
+    <connection from="1" to="2"/>
+    <connection from="2" to="3"/>
+    <connection from="3" to="4"/>
+    <connection from="4" to="5"/>
+    <connection from="5" to="6"/>
+    <connection from="6" to="7"/>
+    <connection from="7" to="8"/>
+    <connection from="8" to="9"/>
+    <connection from="9" to="10" condition="True"/>
+    <connection from="9" to="11" condition="False"/>
+    <connection from="11" to="12"/>
+    <connection from="12" to="13"/>
+    <connection from="13" to="14"/>
+    <connection from="14" to="15"/>
+    <connection from="15" to="16" condition="True"/>
+    <connection from="15" to="17" condition="False"/>
+    <connection from="16" to="7"/>
+    <connection from="17" to="7"/>
+    <connection from="10" to="18"/>
+    <connection from="18" to="19"/>
+    <connection from="19" to="20"/>
+    <connection from="20" to="21"/>
+    <connection from="21" to="22"/>
+  </connections>
+
+</flowgorithm>
