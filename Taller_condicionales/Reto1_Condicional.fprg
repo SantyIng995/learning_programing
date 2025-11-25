@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<flowgorithm fileversion="3.0">
+  <properties>
+    <name>DadoParImparGanador</name>
+  </properties>
+
+  <symbols>
+    <symbol id="1" type="start"/>
+
+    <symbol id="2" type="declare">
+      <variable name="dado1" type="integer"/>
+      <variable name="dado2" type="integer"/>
+    </symbol>
+
+    <symbol id="3" type="assign">
+      <assignment variable="dado1" expression="RandomInteger(1,6)"/>
+    </symbol>
+
+    <symbol id="4" type="assign">
+      <assignment variable="dado2" expression="RandomInteger(1,6)"/>
+    </symbol>
+
+    <symbol id="5" type="output">
+      <text>Concatenate(dado1, " ", dado2)</text>
+    </symbol>
+
+    <symbol id="6" type="if" expression="dado1 % 2 = 0"/>
+    <symbol id="7" type="output">
+      <text>Concatenate(dado1, " Es par")</text>
+    </symbol>
+    <symbol id="8" type="output">
+      <text>Concatenate(dado1, " Es impar")</text>
+    </symbol>
+
+    <symbol id="9" type="if" expression="dado2 % 2 = 0"/>
+    <symbol id="10" type="output">
+      <text>Concatenate(dado2, " Es par")</text>
+    </symbol>
+    <symbol id="11" type="output">
+      <text>Concatenate(dado2, " Es impar")</text>
+    </symbol>
+
+    <symbol id="12" type="if" expression="dado1 = dado2"/>
+    <symbol id="13" type="output">
+      <text>Ganaste</text>
+    </symbol>
+    <symbol id="14" type="output">
+      <text>Game over</text>
+    </symbol>
+
+    <symbol id="15" type="end"/>
+  </symbols>
+
+  <connections>
+    <connection from="1" to="2"/>
+    <connection from="2" to="3"/>
+    <connection from="3" to="4"/>
+    <connection from="4" to="5"/>
+    <connection from="5" to="6"/>
+
+    <connection from="6" to="7" condition="True"/>
+    <connection from="6" to="8" condition="False"/>
+
+    <connection from="7" to="9"/>
+    <connection from="8" to="9"/>
+
+    <connection from="9" to="10" condition="True"/>
+    <connection from="9" to="11" condition="False"/>
+
+    <connection from="10" to="12"/>
+    <connection from="11" to="12"/>
+
+    <connection from="12" to="13" condition="True"/>
+    <connection from="12" to="14" condition="False"/>
+
+    <connection from="13" to="15"/>
+    <connection from="14" to="15"/>
+  </connections>
+</flowgorithm>
