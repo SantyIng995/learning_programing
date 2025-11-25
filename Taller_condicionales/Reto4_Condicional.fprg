@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<flowgorithm fileversion="3.0">
+  <properties>
+    <name>MathMenu</name>
+  </properties>
+
+  <symbols>
+    <symbol id="1" type="start"/>
+
+    <symbol id="2" type="declare">
+      <variable name="num1" type="real"/>
+      <variable name="num2" type="real"/>
+      <variable name="opt" type="integer"/>
+      <variable name="res" type="real"/>
+    </symbol>
+
+    <symbol id="3" type="input">
+      <variable>num1</variable>
+      <prompt>Enter value to number 1:</prompt>
+    </symbol>
+
+    <symbol id="4" type="input">
+      <variable>num2</variable>
+      <prompt>Enter value to number 2:</prompt>
+    </symbol>
+
+    <symbol id="5" type="output">
+      <text>Math menu:
+[1] Add
+[2] Subs
+[3] Mult
+[4] Div
+[5] All</text>
+    </symbol>
+
+    <symbol id="6" type="input">
+      <variable>opt</variable>
+      <prompt>Press any option [1-5]:</prompt>
+    </symbol>
+
+    <symbol id="7" type="if" expression="opt = 1"/>
+    <symbol id="8" type="assign">
+      <assignment variable="res" expression="num1 + num2"/>
+    </symbol>
+    <symbol id="9" type="output">
+      <text>Concatenate("Addition: ", res)</text>
+    </symbol>
+
+    <symbol id="10" type="if" expression="opt = 2"/>
+    <symbol id="11" type="assign">
+      <assignment variable="res" expression="num1 - num2"/>
+    </symbol>
+    <symbol id="12" type="output">
+      <text>Concatenate("Substraction: ", res)</text>
+    </symbol>
+
+    <symbol id="13" type="if" expression="opt = 3"/>
+    <symbol id="14" type="assign">
+      <assignment variable="res" expression="num1 * num2"/>
+    </symbol>
+    <symbol id="15" type="output">
+      <text>Concatenate("Multiplication: ", res)</text>
+    </symbol>
+
+    <symbol id="16" type="if" expression="opt = 4"/>
+    <symbol id="17" type="if" expression="num2 &gt; 0"/>
+    <symbol id="18" type="assign">
+      <assignment variable="res" expression="num1 / num2"/>
+    </symbol>
+    <symbol id="19" type="output">
+      <text>Concatenate("Division: ", res)</text>
+    </symbol>
+    <symbol id="20" type="output">
+      <text>It is not possible to divide by zero</text>
+    </symbol>
+
+    <symbol id="21" type="if" expression="opt = 5"/>
+    <symbol id="22" type="output">
+      <text>Concatenate("Add: ", num1 + num2)</text>
+    </symbol>
+    <symbol id="23" type="output">
+      <text>Concatenate("Subs: ", num1 - num2)</text>
+    </symbol>
+    <symbol id="24" type="output">
+      <text>Concatenate("Mult: ", num1 * num2)</text>
+    </symbol>
+    <symbol id="25" type="if" expression="num2 &gt; 0"/>
+    <symbol id="26" type="output">
+      <text>Concatenate("Division: ", num1 / num2)</text>
+    </symbol>
+    <symbol id="27" type="output">
+      <text>It is not possible to divide by zero</text>
+    </symbol>
+
+    <symbol id="28" type="output">
+      <text>Invalid option !!!</text>
+    </symbol>
+
+    <symbol id="29" type="end"/>
+  </symbols>
+
+  <connections>
+    <connection from="1" to="2"/>
+    <connection from="2" to="3"/>
+    <connection from="3" to="4"/>
+    <connection from="4" to="5"/>
+    <connection from="5" to="6"/>
+    <connection from="6" to="7"/>
+
+    <connection from="7" to="8" condition="True"/>
+    <connection from="8" to="9"/>
+    <connection from="9" to="29"/>
+
+    <connection from="7" to="10" condition="False"/>
+    <connection from="10" to="11" condition="True"/>
+    <connection from="11" to="12"/>
+    <connection from="12" to="29"/>
+
+    <connection from="10" to="13" condition="False"/>
+    <connection from="13" to="14" condition="True"/>
+    <connection from="14" to="15"/>
+    <connection from="15" to="29"/>
+
+    <connection from="13" to="16" condition="False"/>
+    <connection from="16" to="17" condition="True"/>
+    <connection from="17" to="18" condition="True"/>
+    <connection from="18" to="19"/>
+    <connection from="19" to="29"/>
+
+    <connection from="17" to="20" condition="False"/>
+    <connection from="20" to="29"/>
+
+    <connection from="16" to="21" condition="False"/>
+    <connection from="21" to="22" condition="True"/>
+    <connection from="22" to="23"/>
+    <connection from="23" to="24"/>
+    <connection from="24" to="25"/>
+    <connection from="25" to="26" condition="True"/>
+    <connection from="26" to="29"/>
+    <connection from="25" to="27" condition="False"/>
+    <connection from="27" to="29"/>
+
+    <connection from="21" to="28" condition="False"/>
+    <connection from="28" to="29"/>
+  </connections>
+
+</flowgorithm>
