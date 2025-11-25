@@ -1,0 +1,106 @@
+ <?xml version="1.0" encoding="utf-8"?>
+<flowgorithm version="2.18.0">
+
+  <function name="Main" type="None">
+
+
+    <declaration name="total_empleados" type="Integer"/>
+    <declaration name="total_m" type="Integer"/>
+    <declaration name="total_f" type="Integer"/>
+    <declaration name="total_o" type="Integer"/>
+    <declaration name="total_salarios" type="Real"/>
+    <declaration name="suma_edades" type="Real"/>
+    <declaration name="operacion" type="String"/>
+    <declaration name="nombre" type="String"/>
+    <declaration name="email" type="String"/>
+    <declaration name="numero" type="String"/>
+    <declaration name="genero" type="String"/>
+    <declaration name="salario" type="Real"/>
+    <declaration name="nacimiento" type="Integer"/>
+    <declaration name="año_actual" type="Integer"/>
+    <declaration name="edad" type="Integer"/>
+
+
+    <assignment variable="total_empleados">0</assignment>
+    <assignment variable="total_m">0</assignment>
+    <assignment variable="total_f">0</assignment>
+    <assignment variable="total_o">0</assignment>
+    <assignment variable="total_salarios">0</assignment>
+    <assignment variable="suma_edades">0</assignment>
+
+
+    <input variable="operacion">"Desea agregar empleado? (S/N): "</input>
+
+
+    <selection>
+      <condition>operacion &lt;&gt; "S" AND operacion &lt;&gt; "N"</condition>
+      <output>"Opción inválida"</output>
+      <assignment variable="operacion">"N"</assignment>
+      <case type="default"/>
+    </selection>
+
+
+    <loop type="PreTest">
+      <condition>operacion = "S"</condition>
+
+      <output>"Registro de empleado"</output>
+
+      <input variable="nombre">"Nombres completos: "</input>
+      <input variable="email">"Email: "</input>
+      <input variable="numero">"Número móvil: "</input>
+
+
+      <input variable="genero">"Género (M/F/O): "</input>
+
+      <loop type="PreTest">
+        <condition>genero &lt;&gt; "M" AND genero &lt;&gt; "F" AND genero &lt;&gt; "O"</condition>
+        <output>"Género inválido"</output>
+        <input variable="genero">"Género (M/F/O): "</input>
+      </loop>
+
+
+      <input variable="salario">"Salario: "</input>
+
+
+      <input variable="nacimiento">"Año de nacimiento: "</input>
+      <assignment variable="año_actual">2025</assignment>
+      <assignment variable="edad">año_actual - nacimiento</assignment>
+
+      <selection>
+        <condition>edad &lt; 18</condition>
+        <output>"Empleado debe ser mayor de 18"</output>
+        <case type="default"/>
+      </selection>
+
+
+      <assignment variable="total_empleados">total_empleados + 1</assignment>
+      <assignment variable="total_salarios">total_salarios + salario</assignment>
+      <assignment variable="suma_edades">suma_edades + edad</assignment>
+
+
+      <selection>
+        <condition>genero = "M"</condition>
+        <assignment variable="total_m">total_m + 1</assignment>
+
+        <condition>genero = "F"</condition>
+        <assignment variable="total_f">total_f + 1</assignment>
+
+        <assignment variable="total_o">total_o + 1</assignment>
+        <case type="default"/>
+      </selection>
+
+
+      <input variable="operacion">"¿Desea agregar otro? (S/N): "</input>
+    </loop>
+
+
+    <output>"REPORTE FINAL"</output>
+    <output>"Total empleados: " + total_empleados</output>
+    <output>"Total M: " + total_m</output>
+    <output>"Total F: " + total_f</output>
+    <output>"Total O: " + total_o</output>
+    <output>"Total salarios: " + total_salarios</output>
+    <output>"Promedio edades: " + (suma_edades / total_empleados)</output>
+
+  </function>
+</flowgorithm>
