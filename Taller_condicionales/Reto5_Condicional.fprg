@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<flowgorithm fileversion="3.0">
+  <properties>
+    <name>SalarioAjustado</name>
+  </properties>
+
+  <symbols>
+    <symbol id="1" type="start"/>
+
+    <symbol id="2" type="declare">
+      <variable name="dc" type="string"/>
+      <variable name="name" type="string"/>
+      <variable name="lastname" type="string"/>
+      <variable name="gender" type="string"/>
+      <variable name="year" type="string"/>
+      <variable name="direction" type="string"/>
+      <variable name="phone" type="string"/>
+      <variable name="salary" type="integer"/>
+    </symbol>
+
+    <symbol id="3" type="input"><variable>dc</variable><prompt>CC,PS,CE,CI:</prompt></symbol>
+    <symbol id="4" type="input"><variable>name</variable><prompt>Nombre:</prompt></symbol>
+    <symbol id="5" type="input"><variable>lastname</variable><prompt>Apellido:</prompt></symbol>
+    <symbol id="6" type="input"><variable>gender</variable><prompt>Genero:</prompt></symbol>
+    <symbol id="7" type="input"><variable>year</variable><prompt>Año de nacimiento:</prompt></symbol>
+    <symbol id="8" type="input"><variable>direction</variable><prompt>Direccion:</prompt></symbol>
+    <symbol id="9" type="input"><variable>phone</variable><prompt>Telefono:</prompt></symbol>
+    <symbol id="10" type="input"><variable>salary</variable><prompt>Salario:</prompt></symbol>
+
+    <symbol id="11" type="if" expression="salary &lt;= 1200000 AND gender = &quot;mujer&quot;"/>
+    <symbol id="12" type="assignment"><expression>salary = salary + (salary * 0.10)</expression></symbol>
+
+    <symbol id="13" type="if" expression="salary &lt;= 1200000 AND gender = &quot;hombre&quot;"/>
+    <symbol id="14" type="assignment"><expression>salary = salary + (salary * 0.08)</expression></symbol>
+
+    <symbol id="15" type="if" expression="salary &gt; 1200000 AND salary &lt; 2000000"/>
+    <symbol id="16" type="assignment"><expression>salary = salary + (salary * 0.05)</expression></symbol>
+
+    <symbol id="17" type="if" expression="salary &gt;= 2000000 AND gender = &quot;mujer&quot;"/>
+    <symbol id="18" type="assignment"><expression>salary = salary + (salary * 0.03)</expression></symbol>
+
+    <symbol id="19" type="if" expression="salary &gt;= 2000000 AND gender = &quot;hombre&quot;"/>
+    <symbol id="20" type="assignment"><expression>salary = salary + (salary * 0.025)</expression></symbol>
+
+    <symbol id="21" type="output"><text>salary</text></symbol>
+
+    <symbol id="22" type="end"/>
+
+  </symbols>
+
+  <connections>
+    <connection from="1" to="2"/>
+    <connection from="2" to="3"/>
+    <connection from="3" to="4"/>
+    <connection from="4" to="5"/>
+    <connection from="5" to="6"/>
+    <connection from="6" to="7"/>
+    <connection from="7" to="8"/>
+    <connection from="8" to="9"/>
+    <connection from="9" to="10"/>
+
+    <connection from="10" to="11"/>
+
+    <connection from="11" to="12" condition="True"/>
+    <connection from="12" to="21"/>
+
+    <connection from="11" to="13" condition="False"/>
+    <connection from="13" to="14" condition="True"/>
+    <connection from="14" to="21"/>
+
+    <connection from="13" to="15" condition="False"/>
+    <connection from="15" to="16" condition="True"/>
+    <connection from="16" to="21"/>
+
+    <connection from="15" to="17" condition="False"/>
+    <connection from="17" to="18" condition="True"/>
+    <connection from="18" to="21"/>
+
+    <connection from="17" to="19" condition="False"/>
+    <connection from="19" to="20" condition="True"/>
+    <connection from="20" to="21"/>
+
+    <connection from="21" to="22"/>
+  </connections>
+
+</flowgorithm>
