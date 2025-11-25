@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<flowgorithm fileversion="3.0">
+  <properties>
+    <name>NumeroSignoParidad</name>
+  </properties>
+
+  <symbols>
+    <symbol id="1" type="start"/>
+
+    <symbol id="2" type="declare">
+      <variable name="num" type="integer"/>
+    </symbol>
+
+    <symbol id="3" type="input">
+      <variable>num</variable>
+      <prompt>Ingresar número:</prompt>
+    </symbol>
+
+    <symbol id="4" type="if" expression="num % 2 = 0"/>
+
+    <!-- Rama PAR -->
+    <symbol id="5" type="if" expression="num &lt; 0"/>
+    <symbol id="6" type="output">
+      <text>El número es negativo y es par</text>
+    </symbol>
+    <symbol id="7" type="output">
+      <text>El número es positivo y es par</text>
+    </symbol>
+
+    <!-- Rama IMPAR -->
+    <symbol id="8" type="if" expression="num &lt; 0"/>
+    <symbol id="9" type="output">
+      <text>El número es negativo y es impar</text>
+    </symbol>
+    <symbol id="10" type="output">
+      <text>El número es positivo y es impar</text>
+    </symbol>
+
+    <symbol id="11" type="end"/>
+  </symbols>
+
+  <connections>
+    <connection from="1" to="2"/>
+    <connection from="2" to="3"/>
+    <connection from="3" to="4"/>
+
+    <!-- Si es PAR -->
+    <connection from="4" to="5" condition="True"/>
+    <connection from="5" to="6" condition="True"/>
+    <connection from="5" to="7" condition="False"/>
+    <connection from="6" to="11"/>
+    <connection from="7" to="11"/>
+
+    <!-- Si es IMPAR -->
+    <connection from="4" to="8" condition="False"/>
+    <connection from="8" to="9" condition="True"/>
+    <connection from="8" to="10" condition="False"/>
+    <connection from="9" to="11"/>
+    <connection from="10" to="11"/>
+  </connections>
+
+</flowgorithm>
