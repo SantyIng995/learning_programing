@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<flowgorithm fileversion="2.18">
+  <attributes>
+    <attribute name="name" value="TirarDadoVariasVeces"/>
+  </attributes>
+  <symbols>
+    <symbol type="start" id="1" next="2"/>
+
+    <symbol type="input" id="2" next="3">
+      <variable>dato</variable>
+      <prompt>¿Cuántas veces quieres tirar el dado?</prompt>
+    </symbol>
+
+    <symbol type="assign" id="3" next="4">
+      <variable>suma</variable>
+      <expression>0</expression>
+    </symbol>
+
+    <symbol type="loop" id="4" type2="for" next="9">
+      <init>i = 1</init>
+      <condition>i &lt;= dato</condition>
+      <update>i = i + 1</update>
+      <body start="5"/>
+    </symbol>
+
+    <symbol type="assign" id="5" next="6">
+      <variable>numero</variable>
+      <expression>RandomInteger(1,6)</expression>
+    </symbol>
+
+    <symbol type="output" id="6" next="7">
+      <text>{numero}</text>
+    </symbol>
+
+    <symbol type="assign" id="7" next="8">
+      <variable>suma</variable>
+      <expression>suma + numero</expression>
+    </symbol>
+
+    <symbol type="endloop" id="8" next="9"/>
+
+    <symbol type="output" id="9" next="10">
+      <text>Total valores de los lanzamientos: {suma}</text>
+    </symbol>
+
+    <symbol type="end" id="10"/>
+  </symbols>
+
+  <functions>
+    <function name="Main" type="None">
+      <parameters/>
+      <body start="1"/>
+    </function>
+  </functions>
+</flowgorithm>
